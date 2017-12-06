@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>RSS Reader</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/blog.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+
+      <div class="blog-header" style="margin-top: 30px">
+        <div class="container">
+          <h1 class="blog-title">RSS читалка</h1>
+          <p class="lead blog-description">7 лабораторная работа, Безмельницын Дмитрий Р3400</p>
+        </div>
+      </div>
+    </header>
+
+    <main role="main" class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <h3>Произошла ошибка при добавлении RSS</h3>
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-sm-3 ml-sm-auto blog-sidebar">
+          <div class="sidebar-module">
+            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Добавить RSS ленту</button>
+            <!--<button class="btn btn-primary btn-block">Обновить эту ленту</button>-->
+          </div>
+          <div class="sidebar-module">
+            <h4>Доступные RSS</h4>
+            <ol class="list-unstyled">
+              % for item in feed_list:
+                <li><a href="/rss/view/{{ item[0] }}">{{ item[1] }}</a></li>
+              % end
+            </ol>
+          </div>
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </main><!-- /.container -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Добавить RSS ленту</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/rss/add" method="post">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="url">RSS URL</label>
+                <input type="text" class="form-control" id="url" name="link" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+              <button type="submit" class="btn btn-primary">Добавить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+  </body>
+</html>
